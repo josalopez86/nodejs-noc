@@ -1,12 +1,13 @@
-node_modules/
-dist/
+/node_modules/
+/dist/
 
-logs/
+/logs/
 
 .env
 .DS_Store
 .vscode/
 coverage/
-mongo/
+/mongo/
 mongo_data/
-postgres/
+/postgres/
+/src/generated/prisma
