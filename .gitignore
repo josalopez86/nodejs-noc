@@ -1,0 +1,12 @@
+node_modules/
+dist/
+
+logs/
+
+.env
+.DS_Store
+.vscode/
+coverage/
+mongo/
+mongo_data/
+postgres/
