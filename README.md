@@ -1,6 +1,8 @@
 # NOC Project
 
-Project using clean architecture with Typescript
+Project using clean architecture with Typescript.
+MongoDB and Postgres databases.
+Using mongoose to connect with MongoDB and Prisma to connect with Postgres
 
 #dev
 1. Clone .env.template and rename it .env
