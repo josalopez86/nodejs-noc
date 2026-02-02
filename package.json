@@ -22,10 +22,13 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
     "cron": "^4.4.0",
     "dotenv": "^17.2.3",
     "env-var": "^7.5.0",
     "mongoose": "^9.1.5",
-    "nodemailer": "^7.0.12"
+    "nodemailer": "^7.0.12",
+    "pg": "^8.18.0"
   }
 }

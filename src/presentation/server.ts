@@ -29,16 +29,16 @@ export class Server{
 
 
         //const url = "http://localhost:3000/posts";
-        const url = "https://google.com";
-        CronService.createJob(
-            '*/3 * * * * *', 
-            ()=>{
-                new CheckService(
-                    logRepository,
-                    ()=>{console.log("Sucess...")},
-                    (error)=>{console.log(error)}
-                ).execute(url);
-            }
-        );
+        // const url = "https://google.com";
+        // CronService.createJob(
+        //     '*/3 * * * * *', 
+        //     ()=>{
+        //         new CheckService(
+        //             logRepository,
+        //             ()=>{console.log("Sucess...")},
+        //             (error)=>{console.log(error)}
+        //         ).execute(url);
+        //     }
+        // );
     }
 }

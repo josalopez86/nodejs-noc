@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
@@ -20,9 +20,9 @@ enum SeverityLevel{
 }
 
 model LogModel{
-   id     Int     @id @default(autoincrement())
-  message String
-  origin  String
-  level   SeverityLevel
+  id        Int      @id @default(autoincrement())
+  message   String
+  origin    String
+  level     SeverityLevel
   createdAt DateTime @default(now())
 }
