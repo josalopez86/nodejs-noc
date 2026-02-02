@@ -1,14 +1,23 @@
 import { CheckService } from "../domain/use-cases/checks/check-service";
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource";
 import { MongoLogDatasource } from "../infrastructure/datasources/mongo-log.datasource";
+import { PostgresLogDatasource } from "../infrastructure/datasources/postgres-log.datasource";
 import { LogRepositoryImplementation } from "../infrastructure/repositories/log.repository.implementation";
 import { CronService } from "./cron/cron-service";
 import { EmailService } from "./email/email.service";
 
 //const logRepository = new LogRepositoryImplementation(new FileSystemDatasource());
-const logRepository = new LogRepositoryImplementation(new MongoLogDatasource());
-const emailService = new EmailService();
+//const logRepository = new LogRepositoryImplementation(new MongoLogDatasource());
+//const logRepository = new LogRepositoryImplementation(new PostgresLogDatasource());
+
+const logsRepositories = [new LogRepositoryImplementation(new FileSystemDatasource()), 
+        new LogRepositoryImplementation(new MongoLogDatasource()),
+        new LogRepositoryImplementation(new PostgresLogDatasource())
+    ];
+
+//const emailService = new EmailService();
 
 export class Server{
     public  static async start(){
@@ -29,7 +38,7 @@ export class Server{
 
 
         //const url = "http://localhost:3000/posts";
-        // const url = "https://google.com";
+        const url = "https://google.com";
         // CronService.createJob(
         //     '*/3 * * * * *', 
         //     ()=>{
@@ -40,5 +49,16 @@ export class Server{
         //         ).execute(url);
         //     }
         // );
+
+        CronService.createJob(
+            '*/3 * * * * *', 
+            ()=>{
+                new CheckServiceMultiple(
+                    logsRepositories,
+                    ()=>{console.log("Sucess...")},
+                    (error)=>{console.log(error)}
+                ).execute(url);
+            }
+        );
     }
 }
