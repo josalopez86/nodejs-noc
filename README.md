@@ -9,7 +9,8 @@ Using mongoose to connect with MongoDB and Prisma to connect with Postgres
 2. Config environment variables
 3. Install dependencies `npm install`
 4. Create databases `docker compose up -d`
-5. Execute `npm run dev`
+5. Install prisma
+6. Execute `npm run dev`
 
 
 #Install prisma
